@@ -24,7 +24,7 @@
       --accent-glow: rgba(212, 163, 115, 0.12);
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-serif: 'Playfair Display', Georgia, serif;
-      --radius: 12px;
+      --radius: 14px;
       --max-width: 1120px;
     }
 
@@ -54,9 +54,6 @@
       transition: all 0.2s ease;
     }
 
-    /* =======================================================
-       LAYOUT & UTILITIES
-       ======================================================= */
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -66,8 +63,7 @@
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
+      padding: 6px 14px;
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -90,6 +86,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       padding: 13px 26px;
       font-size: 0.9rem;
       font-weight: 600;
@@ -130,7 +127,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(13, 14, 17, 0.82);
+      background: rgba(13, 14, 17, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(35, 39, 51, 0.6);
       padding: 18px 0;
@@ -143,7 +140,7 @@
     }
 
     .brand {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
@@ -151,7 +148,7 @@
     nav {
       display: flex;
       gap: 24px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-secondary);
     }
 
@@ -190,7 +187,7 @@
     }
 
     /* =======================================================
-       THREE PILLARS (UNDERSTAND - STRATEGISE - BUILD)
+       THREE PILLARS
        ======================================================= */
     .framework-strip {
       display: grid;
@@ -204,11 +201,6 @@
       border: 1px solid var(--surface-border);
       padding: 30px;
       border-radius: var(--radius);
-      transition: border-color 0.2s ease;
-    }
-
-    .framework-card:hover {
-      border-color: var(--accent);
     }
 
     .step-num {
@@ -231,10 +223,10 @@
     }
 
     /* =======================================================
-       SELECTED WORK (BENTO GRID)
+       SELECTED WORK (WITH IMAGES)
        ======================================================= */
     .section-title {
-      font-size: 2rem;
+      font-size: 2.1rem;
       letter-spacing: -0.02em;
       margin-bottom: 8px;
     }
@@ -242,13 +234,13 @@
     .section-desc {
       color: var(--text-secondary);
       margin-bottom: 40px;
-      max-width: 600px;
+      max-width: 620px;
     }
 
     .work-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 28px;
       margin-bottom: 100px;
     }
 
@@ -256,20 +248,55 @@
       background: var(--surface);
       border: 1px solid var(--surface-border);
       border-radius: var(--radius);
-      padding: 36px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.2s ease;
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
     .work-card:hover {
       border-color: #3b4253;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .work-card.featured {
       grid-column: span 2;
+    }
+
+    /* Image Container & Styling */
+    .card-img-wrap {
+      width: 100%;
+      background: #101217;
+      border-bottom: 1px solid var(--surface-border);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .work-card.featured .card-img-wrap img {
+      height: 380px;
+    }
+
+    .work-card:hover .card-img-wrap img {
+      transform: scale(1.02);
+    }
+
+    .card-body {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
     }
 
     .work-tag {
@@ -282,7 +309,7 @@
     }
 
     .work-title {
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       margin-bottom: 12px;
       line-height: 1.3;
     }
@@ -297,7 +324,7 @@
     .metric-pill {
       align-self: flex-start;
       display: inline-block;
-      padding: 8px 14px;
+      padding: 7px 14px;
       background: #191c24;
       border: 1px solid #2b3040;
       border-radius: 6px;
@@ -307,7 +334,7 @@
     }
 
     /* =======================================================
-       BRIEFS I LIKE SOLVING (TAG CLOUD / GRID)
+       BRIEFS I LIKE SOLVING
        ======================================================= */
     .briefs-grid {
       display: grid;
@@ -320,29 +347,28 @@
       background: var(--surface);
       border: 1px solid var(--surface-border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 26px;
     }
 
     .brief-card h4 {
       font-size: 1.05rem;
       margin-bottom: 10px;
-      color: var(--text-primary);
     }
 
     .brief-card p {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--text-secondary);
       line-height: 1.6;
     }
 
     /* =======================================================
-       CONTACT / FOOTER
+       CONTACT SECTION
        ======================================================= */
     .cta-box {
       background: linear-gradient(180deg, var(--surface) 0%, rgba(20, 22, 28, 0.4) 100%);
       border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      padding: 60px 40px;
+      border-radius: 18px;
+      padding: 64px 32px;
       text-align: center;
       margin-bottom: 80px;
     }
@@ -355,9 +381,36 @@
 
     .cta-box p {
       color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 32px;
+      max-width: 620px;
+      margin: 0 auto 28px;
       font-size: 1rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #191c24;
+      border: 1px solid #2b3040;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+    }
+
+    .contact-badge:hover {
+      border-color: var(--accent);
+      background: var(--surface-hover);
+      transform: translateY(-2px);
     }
 
     footer {
@@ -371,17 +424,18 @@
     }
 
     /* =======================================================
-       RESPONSIVENESS
+       RESPONSIVE
        ======================================================= */
     @media (max-width: 860px) {
-      .framework-strip, .briefs-grid {
+      .framework-strip, .briefs-grid, .work-grid {
         grid-template-columns: 1fr;
       }
       .work-card.featured {
         grid-column: span 1;
       }
-      .work-grid {
-        grid-template-columns: 1fr;
+      .work-card.featured .card-img-wrap img,
+      .card-img-wrap img {
+        height: 220px;
       }
       .hero {
         padding: 80px 0 50px;
@@ -426,26 +480,26 @@
       </div>
     </section>
 
-    <!-- 3 PILLARS / APPROACH -->
+    <!-- APPROACH / FRAMEWORKS -->
     <section id="frameworks" class="framework-strip">
       <div class="framework-card">
         <div class="step-num">01 / Understand</div>
         <h3>People & Context</h3>
-        <p>What are target audiences actually responding to? Uncovering hidden friction, heuristics, and motivation.</p>
+        <p>Uncovering what audiences respond to, finding invisible points of friction, and charting cognitive heuristics.</p>
       </div>
       <div class="framework-card">
         <div class="step-num">02 / Strategise</div>
         <h3>Brand & Creative</h3>
-        <p>Translating psychological observations into differentiated brand positioning, communication, and messaging.</p>
+        <p>Translating psychological observations into differentiated positioning, narrative architecture, and messaging.</p>
       </div>
       <div class="framework-card">
         <div class="step-num">03 / Build</div>
         <h3>Products & Growth</h3>
-        <p>Designing interventions, actionable frameworks, training workshops, and scalable campaigns that convert.</p>
+        <p>Designing interventions, actionable frameworks, training workshops, and repeatable campaign engines.</p>
       </div>
     </section>
 
-    <!-- SELECTED WORK (BEN-TO GRID) -->
+    <!-- SELECTED WORK (WITH IMAGES) -->
     <section id="work">
       <h2 class="section-title">Selected Work</h2>
       <p class="section-desc">A selection of brand, marketing, and behavioural projects across different business contexts.</p>
@@ -453,104 +507,142 @@
       <div class="work-grid">
         <!-- Project 1: Featured -->
         <article class="work-card featured">
-          <div>
-            <div class="work-tag">AI · Creative Effectiveness · Consulting</div>
-            <h3 class="work-title">CreativeScore × Creative Instinct</h3>
-            <p class="work-desc">
-              Transformed an AI creative-evaluation product into a high-value consulting and learning proposition. Designed scoring models, localization prompts, workshop concepts, and the flagship "Fix It For Me" service roadmap.
-            </p>
+          <div class="card-img-wrap">
+            <!-- Replace src with ./creativescore.png once uploaded -->
+            <img src="https://framerusercontent.com/images/tFjUiQ8zeWG10rT1gb9K40Gnw.png?width=1800" alt="CreativeScore Project Preview" loading="lazy">
           </div>
-          <div class="metric-pill">Product Thinking × Behavioral Frameworks × AI Prompt Engineering</div>
+          <div class="card-body">
+            <div>
+              <div class="work-tag">AI · Creative Effectiveness · Consulting</div>
+              <h3 class="work-title">CreativeScore × Creative Instinct</h3>
+              <p class="work-desc">
+                Transformed an AI creative-evaluation product into a consulting and learning proposition. Developed creative evaluation frameworks, prompt architectures, workshop concepts, and the "Fix It For Me" service roadmap.
+              </p>
+            </div>
+            <div class="metric-pill">Product Thinking × Behavioral Frameworks × AI</div>
+          </div>
         </article>
 
         <!-- Project 2 -->
         <article class="work-card">
-          <div>
-            <div class="work-tag">Corporate Brand · Film Strategy</div>
-            <h3 class="work-title">CIEL HR: Dreams of India</h3>
-            <p class="work-desc">
-              Structured the campaign storytelling narrative around a pivotal 10-year brand milestone and national vision.
-            </p>
+          <div class="card-img-wrap">
+            <!-- Replace src with ./cielhr.png once uploaded -->
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80" alt="CIEL HR Campaign" loading="lazy">
           </div>
-          <div class="metric-pill">336K+ Impressions · 176K+ Views</div>
+          <div class="card-body">
+            <div>
+              <div class="work-tag">Corporate Brand · Film Strategy</div>
+              <h3 class="work-title">CIEL HR: Dreams of India</h3>
+              <p class="work-desc">
+                Developed campaign storytelling and brand narrative around a ten-year corporate milestone and a national growth vision.
+              </p>
+            </div>
+            <div class="metric-pill">336K+ Impressions · 176K+ Views</div>
+          </div>
         </article>
 
         <!-- Project 3 -->
         <article class="work-card">
-          <div>
-            <div class="work-tag">L&D · Thought Leadership · Community</div>
-            <h3 class="work-title">Courseplay: Learning Loop</h3>
-            <p class="work-desc">
-              Created an audience-building engine including the Learning Loop newsletter and L&D Think Tank community content.
-            </p>
+          <div class="card-img-wrap">
+            <!-- Replace src with ./courseplay.png once uploaded -->
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Courseplay Newsletter and Community" loading="lazy">
           </div>
-          <div class="metric-pill">210K+ Impressions · 650+ Followers Gained</div>
+          <div class="card-body">
+            <div>
+              <div class="work-tag">L&D · Thought Leadership · Community</div>
+              <h3 class="work-title">Courseplay: Learning Loop</h3>
+              <p class="work-desc">
+                Engineered an audience-building system including the Learning Loop newsletter, behavioural science content, and L&D Think Tank events.
+              </p>
+            </div>
+            <div class="metric-pill">210K+ Impressions · 650+ Followers Gained</div>
+          </div>
         </article>
 
         <!-- Project 4 -->
         <article class="work-card">
-          <div>
-            <div class="work-tag">HR Technology · Product Marketing</div>
-            <h3 class="work-title">HFactoR</h3>
-            <p class="work-desc">
-              Simplified an enterprise HRMS platform for SME decision-makers using clear friction-reduction and product-led positioning.
-            </p>
+          <div class="card-img-wrap">
+            <!-- Replace src with ./hfactor.png once uploaded -->
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="HFactoR Product Marketing" loading="lazy">
           </div>
-          <div class="metric-pill">Product Marketing × SME Discovery</div>
+          <div class="card-body">
+            <div>
+              <div class="work-tag">HR Technology · Product Marketing</div>
+              <h3 class="work-title">HFactoR</h3>
+              <p class="work-desc">
+                Positioned an enterprise HRMS platform for SME decision-makers by stripping out friction and leading with audience-first clarity.
+              </p>
+            </div>
+            <div class="metric-pill">Product Marketing × SME Discovery</div>
+          </div>
         </article>
 
         <!-- Project 5 -->
         <article class="work-card">
-          <div>
-            <div class="work-tag">B2B Consulting · Executive Positioning</div>
-            <h3 class="work-title">Ma Foi Strategic Consultants</h3>
-            <p class="work-desc">
-              Converted deep institutional advisory expertise into visible digital thought leadership, whitepapers, and market authority.
-            </p>
+          <div class="card-img-wrap">
+            <!-- Replace src with ./mafoi.png once uploaded -->
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Ma Foi Thought Leadership" loading="lazy">
           </div>
-          <div class="metric-pill">Executive Authority × Communication</div>
+          <div class="card-body">
+            <div>
+              <div class="work-tag">B2B Consulting · Executive Positioning</div>
+              <h3 class="work-title">Ma Foi Strategic Consultants</h3>
+              <p class="work-desc">
+                Turned advisory depth into visible authority through strategic whitepapers, executive positioning, and industry research.
+              </p>
+            </div>
+            <div class="metric-pill">Executive Authority × Thought Leadership</div>
+          </div>
         </article>
       </div>
     </section>
 
-    <!-- BRIEFS I LIKE SOLVING -->
+    <!-- PROBLEM BRIEFS -->
     <section id="briefs">
       <h2 class="section-title">The Briefs I Like Solving</h2>
-      <p class="section-desc">Business problems are a far more useful starting point than rigid titles.</p>
+      <p class="section-desc">Business problems are a far more useful starting point than rigid job descriptions.</p>
 
       <div class="briefs-grid">
         <div class="brief-card">
           <h4>Stalled Growth</h4>
-          <p>Diagnosing drop-offs, testing new distribution formats, organic audience growth, and creative experimentation.</p>
+          <p>Drop-off diagnostics, content format pivots, audience experimentation, and distribution loops.</p>
         </div>
         <div class="brief-card">
-          <h4>Brand × Audience Alignment</h4>
-          <p>Reframing value props, persona analysis, psychological positioning, and clear communication architecture.</p>
+          <h4>Brand × Audience</h4>
+          <p>Positioning reframes, audience persona audits, communication architecture, and trust building.</p>
         </div>
         <div class="brief-card">
           <h4>New Offering / GTM</h4>
-          <p>Product packaging, launch narrative, pitch strategy, and testing market appetite with behavioral nudges.</p>
+          <p>Product packaging, narrative launch angles, pitch strategy, and testing market appetite.</p>
         </div>
         <div class="brief-card">
           <h4>Creative Strategy</h4>
-          <p>Systematic ad effectiveness analysis, LLM-driven creative audits, messaging hierarchies, and copy iteration.</p>
+          <p>Creative evaluations, LLM-driven messaging audits, copy hierarchies, and ad effectiveness.</p>
         </div>
         <div class="brief-card">
           <h4>Behavioural Problems</h4>
-          <p>Identifying friction points, choice overload, status-quo bias, cognitive heuristics, and low-trust barriers.</p>
+          <p>Friction reduction, choice architecture, cognitive heuristics, and motivation analysis.</p>
         </div>
         <div class="brief-card">
           <h4>Workshops & Training</h4>
-          <p>Curating custom sprint frameworks, behavioral training curriculums, and strategic capability roadmaps.</p>
+          <p>Custom behavioral sprint frameworks, internal training modules, and capability building.</p>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT / CTA -->
+    <!-- CONTACT / CTA SECTION -->
     <section id="contact" class="cta-box">
       <h2>Interested in what happens when behavioural science meets brand strategy?</h2>
-      <p>Open to conversations around brand consulting, creative strategy, consumer behaviour audits, and new ventures.</p>
-      <a href="mailto:saswathas@gmail.com" class="btn btn-primary">Let’s Talk</a>
+      <p>Open to conversations around brand strategy, consumer behaviour audits, creative consulting, or new ideas worth building.</p>
+      
+      <div class="contact-details">
+        <a href="mailto:saswathas@gmail.com" class="contact-badge">
+          <span>✉️</span> saswathas@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/saswatha-sridhar/" target="_blank" rel="noopener noreferrer" class="contact-badge">
+          <span>🔗</span> Connect on LinkedIn
+        </a>
+      </div>
     </section>
 
   </main>
@@ -558,9 +650,9 @@
   <!-- FOOTER -->
   <footer class="container">
     <div>Saswatha Sridhar &copy; 2026</div>
-    <div style="display: flex; gap: 20px;">
-      <a href="mailto:saswathas@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/saswatha-sridhar/" target="_blank" rel="noopener">LinkedIn</a>
+    <div style="display: flex; gap: 24px;">
+      <a href="mailto:saswathas@gmail.com">saswathas@gmail.com</a>
+      <a href="https://www.linkedin.com/in/saswatha-sridhar/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </footer>
 
