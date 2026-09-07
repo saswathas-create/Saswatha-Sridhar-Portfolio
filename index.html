@@ -1,1 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saswatha Sridhar — Brand Strategy & Behavioural Science</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* =======================================================
+       BASE DESIGN TOKENS & RESET
+       ======================================================= */
+    :root {
+      --bg: #0d0e11;
+      --surface: #14161c;
+      --surface-border: #232733;
+      --surface-hover: #1b1e26;
+      --text-primary: #f2f4f8;
+      --text-secondary: #9aa2b2;
+      --text-muted: #5e6676;
+      --accent: #d4a373;
+      --accent-glow: rgba(212, 163, 115, 0.12);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --radius: 12px;
+      --max-width: 1120px;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    body {
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    /* =======================================================
+       LAYOUT & UTILITIES
+       ======================================================= */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(212, 163, 115, 0.25);
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 26px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--text-primary);
+      color: var(--bg);
+      border: 1px solid var(--text-primary);
+    }
+
+    .btn-primary:hover {
+      background: #ffffff;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--surface-border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface);
+      border-color: var(--text-muted);
+    }
+
+    /* =======================================================
+       HEADER / NAV
+       ======================================================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(13, 14, 17, 0.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(35, 39, 51, 0.6);
+      padding: 18px 0;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    nav a:hover {
+      color: var(--text-primary);
+    }
+
+    /* =======================================================
+       HERO SECTION
+       ======================================================= */
+    .hero {
+      padding: 120px 0 90px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.15;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span.serif {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    /* =======================================================
+       THREE PILLARS (UNDERSTAND - STRATEGISE - BUILD)
+       ======================================================= */
+    .framework-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 40px 0 80px;
+    }
+
+    .framework-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      padding: 30px;
+      border-radius: var(--radius);
+      transition: border-color 0.2s ease;
+    }
+
+    .framework-card:hover {
+      border-color: var(--accent);
+    }
+
+    .step-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .framework-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .framework-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* =======================================================
+       SELECTED WORK (BENTO GRID)
+       ======================================================= */
+    .section-title {
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 100px;
+    }
+
+    .work-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .work-card:hover {
+      border-color: #3b4253;
+      transform: translateY(-2px);
+    }
+
+    .work-card.featured {
+      grid-column: span 2;
+    }
+
+    .work-tag {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .work-title {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .work-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .metric-pill {
+      align-self: flex-start;
+      display: inline-block;
+      padding: 8px 14px;
+      background: #191c24;
+      border: 1px solid #2b3040;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #e4e7ee;
+      font-weight: 500;
+    }
+
+    /* =======================================================
+       BRIEFS I LIKE SOLVING (TAG CLOUD / GRID)
+       ======================================================= */
+    .briefs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 100px;
+    }
+
+    .brief-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .brief-card h4 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .brief-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* =======================================================
+       CONTACT / FOOTER
+       ======================================================= */
+    .cta-box {
+      background: linear-gradient(180deg, var(--surface) 0%, rgba(20, 22, 28, 0.4) 100%);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-box p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      font-size: 1rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--surface-border);
+      padding: 30px 0 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* =======================================================
+       RESPONSIVENESS
+       ======================================================= */
+    @media (max-width: 860px) {
+      .framework-strip, .briefs-grid {
+        grid-template-columns: 1fr;
+      }
+      .work-card.featured {
+        grid-column: span 1;
+      }
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 80px 0 50px;
+      }
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <div class="container nav-wrapper">
+      <div class="brand">Saswatha Sridhar</div>
+      <nav>
+        <a href="#work">Selected Work</a>
+        <a href="#frameworks">Approach</a>
+        <a href="#briefs">Problem Briefs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="badge">Brand Strategy × Consumer Behaviour</div>
+      <h1>
+        I study how people think — and turn that into <span class="serif">better brand decisions.</span>
+      </h1>
+      <p class="hero-sub">
+        I work at the intersection of brand strategy, marketing, and behavioural science. Using structured psychological models to uncover what drives choices, reduces friction, and builds enduring trust.
+      </p>
+      <div class="btn-group">
+        <a href="#work" class="btn btn-primary">View Selected Work</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </section>
+
+    <!-- 3 PILLARS / APPROACH -->
+    <section id="frameworks" class="framework-strip">
+      <div class="framework-card">
+        <div class="step-num">01 / Understand</div>
+        <h3>People & Context</h3>
+        <p>What are target audiences actually responding to? Uncovering hidden friction, heuristics, and motivation.</p>
+      </div>
+      <div class="framework-card">
+        <div class="step-num">02 / Strategise</div>
+        <h3>Brand & Creative</h3>
+        <p>Translating psychological observations into differentiated brand positioning, communication, and messaging.</p>
+      </div>
+      <div class="framework-card">
+        <div class="step-num">03 / Build</div>
+        <h3>Products & Growth</h3>
+        <p>Designing interventions, actionable frameworks, training workshops, and scalable campaigns that convert.</p>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK (BEN-TO GRID) -->
+    <section id="work">
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-desc">A selection of brand, marketing, and behavioural projects across different business contexts.</p>
+      
+      <div class="work-grid">
+        <!-- Project 1: Featured -->
+        <article class="work-card featured">
+          <div>
+            <div class="work-tag">AI · Creative Effectiveness · Consulting</div>
+            <h3 class="work-title">CreativeScore × Creative Instinct</h3>
+            <p class="work-desc">
+              Transformed an AI creative-evaluation product into a high-value consulting and learning proposition. Designed scoring models, localization prompts, workshop concepts, and the flagship "Fix It For Me" service roadmap.
+            </p>
+          </div>
+          <div class="metric-pill">Product Thinking × Behavioral Frameworks × AI Prompt Engineering</div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="work-card">
+          <div>
+            <div class="work-tag">Corporate Brand · Film Strategy</div>
+            <h3 class="work-title">CIEL HR: Dreams of India</h3>
+            <p class="work-desc">
+              Structured the campaign storytelling narrative around a pivotal 10-year brand milestone and national vision.
+            </p>
+          </div>
+          <div class="metric-pill">336K+ Impressions · 176K+ Views</div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="work-card">
+          <div>
+            <div class="work-tag">L&D · Thought Leadership · Community</div>
+            <h3 class="work-title">Courseplay: Learning Loop</h3>
+            <p class="work-desc">
+              Created an audience-building engine including the Learning Loop newsletter and L&D Think Tank community content.
+            </p>
+          </div>
+          <div class="metric-pill">210K+ Impressions · 650+ Followers Gained</div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="work-card">
+          <div>
+            <div class="work-tag">HR Technology · Product Marketing</div>
+            <h3 class="work-title">HFactoR</h3>
+            <p class="work-desc">
+              Simplified an enterprise HRMS platform for SME decision-makers using clear friction-reduction and product-led positioning.
+            </p>
+          </div>
+          <div class="metric-pill">Product Marketing × SME Discovery</div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="work-card">
+          <div>
+            <div class="work-tag">B2B Consulting · Executive Positioning</div>
+            <h3 class="work-title">Ma Foi Strategic Consultants</h3>
+            <p class="work-desc">
+              Converted deep institutional advisory expertise into visible digital thought leadership, whitepapers, and market authority.
+            </p>
+          </div>
+          <div class="metric-pill">Executive Authority × Communication</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- BRIEFS I LIKE SOLVING -->
+    <section id="briefs">
+      <h2 class="section-title">The Briefs I Like Solving</h2>
+      <p class="section-desc">Business problems are a far more useful starting point than rigid titles.</p>
+
+      <div class="briefs-grid">
+        <div class="brief-card">
+          <h4>Stalled Growth</h4>
+          <p>Diagnosing drop-offs, testing new distribution formats, organic audience growth, and creative experimentation.</p>
+        </div>
+        <div class="brief-card">
+          <h4>Brand × Audience Alignment</h4>
+          <p>Reframing value props, persona analysis, psychological positioning, and clear communication architecture.</p>
+        </div>
+        <div class="brief-card">
+          <h4>New Offering / GTM</h4>
+          <p>Product packaging, launch narrative, pitch strategy, and testing market appetite with behavioral nudges.</p>
+        </div>
+        <div class="brief-card">
+          <h4>Creative Strategy</h4>
+          <p>Systematic ad effectiveness analysis, LLM-driven creative audits, messaging hierarchies, and copy iteration.</p>
+        </div>
+        <div class="brief-card">
+          <h4>Behavioural Problems</h4>
+          <p>Identifying friction points, choice overload, status-quo bias, cognitive heuristics, and low-trust barriers.</p>
+        </div>
+        <div class="brief-card">
+          <h4>Workshops & Training</h4>
+          <p>Curating custom sprint frameworks, behavioral training curriculums, and strategic capability roadmaps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section id="contact" class="cta-box">
+      <h2>Interested in what happens when behavioural science meets brand strategy?</h2>
+      <p>Open to conversations around brand consulting, creative strategy, consumer behaviour audits, and new ventures.</p>
+      <a href="mailto:saswathas@gmail.com" class="btn btn-primary">Let’s Talk</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div>Saswatha Sridhar &copy; 2026</div>
+    <div style="display: flex; gap: 20px;">
+      <a href="mailto:saswathas@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/saswatha-sridhar/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+</html>
