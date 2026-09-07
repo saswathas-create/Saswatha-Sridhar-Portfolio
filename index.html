@@ -8,36 +8,51 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
   
-  <.card-img-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  background: #101217;
-  padding: 12px;
-  border-bottom: 1px solid var(--surface-border);
-}
+  <style>
+    /* =======================================================
+       IMAGE GALLERY LAYOUT (ADDITIONAL STYLES)
+       ======================================================= */
+    .card-img-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: #101217;
+      padding: 12px;
+      border-bottom: 1px solid var(--surface-border);
+    }
 
-.card-img-gallery img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid var(--surface-border);
-  transition: transform 0.2s ease;
-}
+    .card-img-gallery img {
+      width: 100%;
+      height: 220px;
+      /* Crucial: Change 'cover' to 'contain' to see the whole image uncropped */
+      object-fit: contain; 
+      border-radius: 8px;
+      border: 1px solid var(--surface-border);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      background: #0d0e11; /* Background for when containment letterboxes */
+    }
 
-.card-img-gallery img:hover {
-  transform: scale(1.03);
-}
+    .card-img-gallery img:hover {
+      transform: scale(1.05);
+      border-color: var(--accent);
+      z-index: 1; /* Elevates hovered image */
+    }
 
-@media (max-width: 768px) {
-  .card-img-gallery {
-    grid-template-columns: 1fr;
-  }
-  .card-img-gallery img {
-    height: 180px;
-  }
-}>
+    @media (max-width: 900px) {
+      .card-img-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card-img-gallery {
+        grid-template-columns: 1fr;
+      }
+      .card-img-gallery img {
+        height: 180px;
+      }
+    }
+
     /* =======================================================
        BASE DESIGN TOKENS & RESET
        ======================================================= */
@@ -252,7 +267,7 @@
     }
 
     /* =======================================================
-       SELECTED WORK (WITH IMAGES)
+       SELECTED WORK
        ======================================================= */
     .section-title {
       font-size: 2.1rem;
@@ -293,7 +308,7 @@
       grid-column: span 2;
     }
 
-    /* Image Container & Styling */
+    /* Standard Image Container */
     .card-img-wrap {
       width: 100%;
       background: #101217;
@@ -462,10 +477,6 @@
       .work-card.featured {
         grid-column: span 1;
       }
-      .work-card.featured .card-img-wrap img,
-      .card-img-wrap img {
-        height: 220px;
-      }
       .hero {
         padding: 80px 0 50px;
       }
@@ -528,21 +539,18 @@
       </div>
     </section>
 
-    <!-- SELECTED WORK (WITH IMAGES) -->
+    <!-- SELECTED WORK -->
     <section id="work">
       <h2 class="section-title">Selected Work</h2>
       <p class="section-desc">A selection of brand, marketing, and behavioural projects across different business contexts.</p>
       
       <div class="work-grid">
-        <!-- Project 1: Featured -->
+        <!-- Project 1: Featured (With Gallery) -->
         <article class="work-card featured">
-          <<div class="card-img-gallery">
-  <img src="./creativescore-1.png" alt="CreativeScore Framework" loading="lazy">
-  <img src="./creativescore-2.png" alt="CreativeScore Templates" loading="lazy">
-  <img src="./creativescore-3.png" alt="CreativeScore Fix It For Me" loading="lazy">
-</div>>
-            <!-- Replace src with ./creativescore.png once uploaded -->
-            <img src="https://framerusercontent.com/images/tFjUiQ8zeWG10rT1gb9K40Gnw.png?width=1800" alt="CreativeScore Project Preview" loading="lazy">
+          <div class="card-img-gallery">
+            <img src="./creativescore-1.png" alt="CreativeScore Framework Screenshot 1" loading="lazy">
+            <img src="./creativescore-2.png" alt="CreativeScore Templates Screenshot 2" loading="lazy">
+            <img src="./creativescore-3.png" alt="CreativeScore Fix It For Me Screenshot 3" loading="lazy">
           </div>
           <div class="card-body">
             <div>
@@ -559,7 +567,6 @@
         <!-- Project 2 -->
         <article class="work-card">
           <div class="card-img-wrap">
-            <!-- Replace src with ./cielhr.png once uploaded -->
             <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80" alt="CIEL HR Campaign" loading="lazy">
           </div>
           <div class="card-body">
@@ -577,7 +584,6 @@
         <!-- Project 3 -->
         <article class="work-card">
           <div class="card-img-wrap">
-            <!-- Replace src with ./courseplay.png once uploaded -->
             <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Courseplay Newsletter and Community" loading="lazy">
           </div>
           <div class="card-body">
@@ -595,7 +601,6 @@
         <!-- Project 4 -->
         <article class="work-card">
           <div class="card-img-wrap">
-            <!-- Replace src with ./hfactor.png once uploaded -->
             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="HFactoR Product Marketing" loading="lazy">
           </div>
           <div class="card-body">
@@ -613,7 +618,6 @@
         <!-- Project 5 -->
         <article class="work-card">
           <div class="card-img-wrap">
-            <!-- Replace src with ./mafoi.png once uploaded -->
             <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Ma Foi Thought Leadership" loading="lazy">
           </div>
           <div class="card-body">
